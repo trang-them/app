@@ -143,7 +143,6 @@
             startGame();
         };
 
-        // Phần game MediaPipe (giữ nguyên như trước)
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         function playCorrectSound() { for(let i=0;i<8;i++) setTimeout(()=>{let o=audioCtx.createOscillator();let g=audioCtx.createGain();o.type='sine';o.frequency.value=600+i*80;g.gain.value=0.3;o.connect(g);g.connect(audioCtx.destination);o.start();setTimeout(()=>o.stop(),100);},i*80); }
         function playWrongSound() { let o=audioCtx.createOscillator();let g=audioCtx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(400,audioCtx.currentTime);o.frequency.exponentialRampToValueAtTime(100,audioCtx.currentTime+1);g.gain.value=0.4;o.connect(g);g.connect(audioCtx.destination);o.start();setTimeout(()=>o.stop(),800); }
